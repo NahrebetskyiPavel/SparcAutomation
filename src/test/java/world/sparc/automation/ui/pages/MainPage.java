@@ -1,8 +1,10 @@
 package world.sparc.automation.ui.pages;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Configuration.startMaximized;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
@@ -15,7 +17,9 @@ public class MainPage {
     SelenideElement logo = $x("");
     SelenideElement search = $x("//input[@id='__BVID__37']");
 
+
     public MainPage open(){
+        startMaximized = true;
         Selenide.open("https://www.sparc.world");
         Selenide.executeJavaScript("window.resizeTo(1920, 1080);");
         return this;

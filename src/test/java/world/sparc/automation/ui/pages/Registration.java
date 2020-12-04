@@ -2,10 +2,7 @@ package world.sparc.automation.ui.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.Keys;
-
-import java.security.Key;
-
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Registration {
@@ -21,12 +18,12 @@ public class Registration {
     }
 
     public Registration setFirsName(String value){
-        $x("//input[@id='__BVID__64']").setValue(value);
+        $x("//*[contains(@class, 'input-first-name')]").setValue(value);
         return this;
     }
 
     public Registration setLastName(String s) {
-        $x("//input[@id='__BVID__66']").setValue(s);
+        $x("//*[contains(@class, 'input-last-name')]").setValue(s);
         return this;
     }
 
@@ -38,8 +35,8 @@ public class Registration {
 
     public Registration setCurrentCity(String s) {
         $x("//input[@id='autocomplete-current-city']").click();
-        $x("//input[@id='autocomplete-current-city']").setValue(s)
-        .sendKeys(Keys.ARROW_DOWN, Keys.ENTER);;
+        $x("//input[@id='autocomplete-current-city']").setValue(s);
+        $x("//*[contains(text(),'"+s+"')]").click();
         return this;
     }
 
@@ -60,17 +57,17 @@ public class Registration {
     }
 
     public Registration setMail(String string) {
-        $x("//input[@id='__BVID__111']").setValue(string);
+        $x("//*[contains(@class, 'input-email')]").setValue(string);
         return this;
     }
 
     public Registration setPass(String s) {
-        $x("//input[@id='__BVID__113']").setValue(s);
+        $x("//*[contains(@class, 'input-password')]").setValue(s);
         return this;
     }
 
     public Registration confirmPass(String s) {
-        $x("//input[@id='__BVID__115']").setValue(s);
+        $x("//*[contains(@class, 'input-confirm-password')]").setValue(s);
         return this;
     }
 
@@ -82,7 +79,13 @@ public class Registration {
     }
 
     public MainPage signUp() {
-        $x("//button[contains(text(),'SignUp')]").click();
+        $x("//button[contains(text(),'Sign Up')]").click();
         return new MainPage();
     }
+
+    public Registration togleAgrementCheckBox(){
+        $("p.checkbox-label").click();
+        return this;
+    }
+
 }
