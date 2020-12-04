@@ -21,7 +21,7 @@ public class TitlePage extends Engagement {
         return this;
     }
 
-    public DescriptionPage clickNext(){
+        public DescriptionPage clickNext(){
         $x("//button[contains(text(),'Next')]").waitUntil(Condition.enabled,5);
         $x("//button[contains(text(),'Next')]").click();
         return new DescriptionPage();

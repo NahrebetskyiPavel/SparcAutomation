@@ -26,7 +26,7 @@ public class TimePage {
     }
 
     public DetailsPage clickNext(){
-        $x("//button[contains(text(),'Next')]").click();
+        $("nonexist").click();
         return new DetailsPage();
     }
 
