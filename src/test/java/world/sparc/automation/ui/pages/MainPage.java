@@ -1,13 +1,13 @@
 package world.sparc.automation.ui.pages;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import world.sparc.automation.ui.pages.comon.Header;
 
 import static com.codeborne.selenide.Configuration.startMaximized;
 import static com.codeborne.selenide.Selenide.*;
 
-public class MainPage {
+public class MainPage extends Header {
     SelenideElement joinNow = $x("//button[contains(text(),'Join Now')]");
     SelenideElement logIn = $x("//a[contains(text(),'Log in')]");
     SelenideElement help = $x("");
@@ -29,5 +29,11 @@ public class MainPage {
         joinNow.click();
         return new Registration();
     }
+
+    public LoginPage openLoginForm() {
+        $x("//a[contains(text(),'Log in')]").click();
+        return new LoginPage();
+    }
+
 
 }
