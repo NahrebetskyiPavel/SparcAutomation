@@ -2,15 +2,15 @@ package world.sparc.automation.ui.pages.createEngagement;
 
 import com.thedeanda.lorem.Lorem;
 import com.thedeanda.lorem.LoremIpsum;
+import world.sparc.automation.ui.pages.comon.BasePage;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class DescriptionPage {
-    Lorem lorem = LoremIpsum.getInstance();
+public class DescriptionPage extends BasePage {
 
     public DescriptionPage addDescription(){
 
-        $("textarea").setValue(lorem.getWords(7,12));
+        $("textarea").setValue(getLorem().getWords(7,12));
         return this;
     }
 

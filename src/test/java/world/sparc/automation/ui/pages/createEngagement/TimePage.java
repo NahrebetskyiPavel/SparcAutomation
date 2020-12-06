@@ -8,25 +8,32 @@ import java.security.Key;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TimePage {
-    public TimePage setStartTime(){
+    public TimePage setStartTime(String time){
         $("input[placeholder='Choose a Start Time']").click();
-        Selenide.getFocusedElement().sendKeys(Keys.ARROW_UP);
-        Selenide.getFocusedElement().sendKeys(Keys.ARROW_UP);
+        $("input[placeholder='Choose a Start Time']").setValue(time);
         $("input[placeholder='Choose a Start Time']").pressEnter();
-
         return this;
     }
 
-    public TimePage seEndTime(){
+    public TimePage openCalendar(){
+        $("div.el-date-editor").click();
+        return this;
+    }
+
+    public TimePage setDate(int date){
+        $x("//span[contains(text(),'"+date+"')]").click();
+        return this;
+    }
+
+    public TimePage     seEndTime(String time){
         $("input[placeholder='Choose an End Time']").click();
-        $$x("//*[contains(text(),'10 PM')]").get(1).click();
-        Selenide.getFocusedElement().sendKeys(Keys.ARROW_DOWN);
+        $("input[placeholder='Choose an End Time']").setValue(time);
         Selenide.getFocusedElement().sendKeys(Keys.ENTER);
         return this;
     }
 
     public DetailsPage clickNext(){
-        $("nonexist").click();
+        $x("//button[contains(text(),'Next')]").click();
         return new DetailsPage();
     }
 
