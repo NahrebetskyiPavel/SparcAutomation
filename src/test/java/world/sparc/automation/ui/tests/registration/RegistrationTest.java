@@ -1,12 +1,9 @@
 package world.sparc.automation.ui.tests.registration;
-
-import com.codeborne.selenide.Condition;
-import org.testng.annotations.Test;
-import world.sparc.automation.helpers.data.User;
+import io.qameta.allure.Description;
+import org.junit.Test;
 import world.sparc.automation.ui.pages.MainPage;
-import world.sparc.automation.ui.pages.Registration;
+import world.sparc.automation.ui.pages.comon.BasePage;
 import world.sparc.automation.ui.tests.runner.Runner;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -14,17 +11,17 @@ import static com.codeborne.selenide.Selenide.$x;
 public class RegistrationTest extends Runner {
 
     @Test
+    @Description(" new client registration test")
     public void byMail() throws InterruptedException {
-
         new MainPage()
                 .open()
                 .register()
                 .regByMail()
-                .setFirsName(user.getName())
-                .setLastName(user.getLastName())
-                .setMail(user.getEmail())
-                .setPass(user.getPassword())
-                .confirmPass(user.getConfirmPassword())
+                .setFirsName("name")
+                .setLastName("pavel")
+                .setMail("greencitypavel@gmail.com".replace("@", new BasePage().getRandom() + "@"))
+                .setPass("1234qwertY-")
+                .confirmPass("1234qwertY-")
                 .setHeadLine("MBA Student at Duke University")
                 .setCurrentCity("New York")
                 .togleAgrementCheckBox()

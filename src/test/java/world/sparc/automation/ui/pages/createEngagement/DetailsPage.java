@@ -2,7 +2,9 @@ package world.sparc.automation.ui.pages.createEngagement;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import org.openqa.selenium.By;
 import world.sparc.automation.ui.pages.comon.BasePage;
 
@@ -27,34 +29,36 @@ public class DetailsPage extends BasePage {
     @Getter private SelenideElement acceptAutomaticallyYes = acceptAutomaticallyRadioBtns.get(0);
     @Getter private SelenideElement acceptAutomaticallyNo = acceptAutomaticallyRadioBtns.get(1);
 
+    @SneakyThrows
+    @Step("chose privacy")
     public DetailsPage chosePrivacy(Privacy type) {
         if (type.equals(Privacy.PRIVATE)) {
             privacyPrivate.click();
         } else
-            privacyPrivate.click();
+            privacyPublic.click();
         return this;
     }
-
+    @Step("next")
     public PricePage clickNext() {
         $x("//button[contains(text(),'Next')]").click();
         return new PricePage();
     }
-
+    @Step
     public TimePage clickBack() {
         $x("//button[contains(text(),'Back')]").click();
         return new TimePage();
     }
-
+    @Step("set capacity")
     public DetailsPage setCapacity(int count) {
         virtualCapacity.setValue(String.valueOf(count));
         return this;
     }
-
+    @Step("add conference link")
     public DetailsPage addConferenceLink(String s) {
         virtualLink.setValue(s);
         return this;
     }
-
+    @Step("add instriction")
     public DetailsPage addEngagementInstructions(String s) {
         virtualInstructions.setValue(s);
         return this;

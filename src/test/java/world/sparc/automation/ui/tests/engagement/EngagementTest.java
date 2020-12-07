@@ -1,22 +1,18 @@
 package world.sparc.automation.ui.tests.engagement;
-
-import com.codeborne.selenide.Condition;
+import io.qameta.allure.Description;
 import lombok.SneakyThrows;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.Test;
 import world.sparc.automation.ui.pages.MainPage;
 import world.sparc.automation.ui.pages.comon.BasePage;
-import world.sparc.automation.ui.pages.createEngagement.DetailsPage;
 import world.sparc.automation.ui.tests.runner.Runner;
-
 import static com.codeborne.selenide.Condition.*;
-import static world.sparc.automation.ui.pages.createEngagement.DetailsPage.*;
 import static world.sparc.automation.ui.pages.createEngagement.DetailsPage.Privacy.*;
 
 public class EngagementTest extends Runner {
 
     @SneakyThrows
-    @Test
+    @Test()
+    @Description("create engagment")
     public void createEngagement(){
         new MainPage()
         .open()
@@ -55,6 +51,5 @@ public class EngagementTest extends Runner {
                                             .clickNext()
                                                 .createEngagement();
         new BasePage().getLoadingLogo().shouldBe(visible);
-        Thread.sleep(1000*30);
     }
 }
