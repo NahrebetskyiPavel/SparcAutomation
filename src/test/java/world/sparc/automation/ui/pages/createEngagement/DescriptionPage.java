@@ -9,7 +9,6 @@ import static com.codeborne.selenide.Selenide.*;
 public class DescriptionPage extends BasePage {
 
     public DescriptionPage addDescription(){
-
         $("textarea").setValue(getLorem().getWords(7,12));
         return this;
     }

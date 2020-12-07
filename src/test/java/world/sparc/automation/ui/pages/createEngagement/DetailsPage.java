@@ -35,9 +35,9 @@ public class DetailsPage extends BasePage {
         return this;
     }
 
-    public LocationPage clickNext() {
+    public PricePage clickNext() {
         $x("//button[contains(text(),'Next')]").click();
-        return new  LocationPage();
+        return new PricePage();
     }
 
     public TimePage clickBack() {
