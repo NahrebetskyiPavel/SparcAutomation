@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import world.sparc.automation.ui.pages.comon.Header;
 
+import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Configuration.startMaximized;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -32,6 +33,7 @@ public class MainPage extends Header {
     }
     @Step("open login form")
     public LoginPage openLoginForm() {
+        $x("//a[contains(text(),'Log in')]").waitUntil(enabled,10);
         $x("//a[contains(text(),'Log in')]").click();
         return new LoginPage();
     }

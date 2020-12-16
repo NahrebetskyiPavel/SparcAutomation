@@ -12,6 +12,7 @@ public class TitlePage extends Engagement {
 
     @Step("set tietle for engagement")
     public TitlePage setTitle(String s){
+        $("input[placeholder='Engagement Title']").waitUntil(Condition.enabled,10);
         $("input[placeholder='Engagement Title']").setValue(s);
         return this;
     }

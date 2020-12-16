@@ -1,5 +1,6 @@
 package world.sparc.automation.ui.pages.createEngagement;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -8,6 +9,7 @@ import lombok.SneakyThrows;
 import org.openqa.selenium.By;
 import world.sparc.automation.ui.pages.comon.BasePage;
 
+import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -33,6 +35,7 @@ public class DetailsPage extends BasePage {
     @Step("chose privacy")
     public DetailsPage chosePrivacy(Privacy type) {
         if (type.equals(Privacy.PRIVATE)) {
+            privacyPrivate.waitUntil(enabled,10);
             privacyPrivate.click();
         } else
             privacyPublic.click();
