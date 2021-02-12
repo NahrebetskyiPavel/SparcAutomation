@@ -39,7 +39,7 @@ public class Runner {
         capabilities.setCapability("enableVideo", false);
         capabilities.setCapability("enableLog", true);
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        driver = new RemoteWebDriver(URI.create("http://3.236.124.104:4444/wd/hub").toURL(),capabilities);
+        driver = new RemoteWebDriver(URI.create("http://134.249.116.210:4444/wd/hub").toURL(),capabilities);
 
         com.codeborne.selenide.WebDriverRunner.setWebDriver(driver);
         driver.manage().window().maximize();
