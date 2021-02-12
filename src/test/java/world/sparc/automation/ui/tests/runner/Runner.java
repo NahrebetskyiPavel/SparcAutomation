@@ -34,12 +34,12 @@ public class Runner {
     @Before
     public void setUp() {
         capabilities.setBrowserName("chrome");
-        capabilities.setVersion("86.0");
+        capabilities.setVersion("88.0");
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", false);
         capabilities.setCapability("enableLog", true);
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        driver = new RemoteWebDriver(URI.create("http://134.249.116.210:4444/wd/hub").toURL(),capabilities);
+        driver = new RemoteWebDriver(URI.create("http://192.168.1.2:4444/wd/hub").toURL(),capabilities);
 
         com.codeborne.selenide.WebDriverRunner.setWebDriver(driver);
         driver.manage().window().maximize();
